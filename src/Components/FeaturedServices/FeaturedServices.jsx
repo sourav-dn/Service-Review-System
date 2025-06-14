@@ -6,25 +6,22 @@ import LoadingPage from "../../Pages/LoadingPage/LoadingPage";
 
 
 const FeaturedServices = () => {
-
     const [services, setServices] = useState([]);
-    const [loading, setLoading] = useState(true); // ✅ Add loading state
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios.get("http://localhost:3000/featured-services") // Replace with your hosted URL
+        axios.get("http://localhost:3000/featured-services")
             .then(res => {
                 setServices(res.data);
-                setLoading(false); // Set loading to false when data is fetched
+                setLoading(false);
             })
             .catch(err => {
                 console.error(err);
-                setLoading(false); // Set loading to false even in case of error
+                setLoading(false);
             });
     }, []);
 
-    // ✅ Show the loading spinner while data is being fetched
     if (loading) {
-        return <LoadingPage />;  // Show loading spinner
+        return <LoadingPage />;
     }
 
     return (
