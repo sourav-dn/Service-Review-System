@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
-
 const MyServices = () => {
 
     const { user } = useContext(Authcontext);
@@ -38,23 +37,10 @@ const MyServices = () => {
         toast.success("Deleted!");
     };
 
-    // const handleUpdateSubmit = async (e) => {
-    //     e.preventDefault();
-    //     await axios.put(`http://localhost:3000/services/${editingService._id}`, updatedData,{
-    //         withCredentials: true
-    //     });
-    //     toast.success("Updated!");
-    //     setEditingService(null);
-    //     setServices(prev =>
-    //         prev.map(s => s._id === editingService._id ? { ...s, ...updatedData } : s)
-    //     );
-    // };
 
     const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Destructure _id out of updatedData to prevent sending it to the server
-            // MongoDB's _id field is immutable and cannot be updated.
             const { _id, ...dataToSend } = updatedData;
 
             const response = await axios.put(`http://localhost:3000/services/${editingService._id}`, dataToSend, {
@@ -62,8 +48,7 @@ const MyServices = () => {
             });
             if (response.status === 200) {
                 toast.success("Service updated successfully!");
-                setEditingService(null); // Close the modal
-                // Update the services list with the new data
+                setEditingService(null); 
                 setServices(prev =>
                     prev.map(s =>
                         s._id === editingService._id ? { ...s, ...updatedData } : s
@@ -74,12 +59,10 @@ const MyServices = () => {
             }
         } catch (error) {
             console.error("Error updating service:", error);
-            // More specific error messages can be added based on error.response.data
             toast.error(error.response?.data?.message || "An error occurred during update.");
         }
     };
 
-    // Handle input changes for the update form
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUpdatedData(prev => ({
@@ -88,21 +71,10 @@ const MyServices = () => {
         }));
     };
 
-
-
-
-    
-
-
-
-
-
-
-    // ✅ If data is still loading, show the spinner (loading page)
+   
     if (loading) {
-        return <LoadingPage />; // Display the loading spinner component
+        return <LoadingPage />; 
     }
-
 
     return (
         <div className="p-8 min-h-screen mt-5 mb-5">
@@ -150,22 +122,6 @@ const MyServices = () => {
                     <div className="modal-box">
                         <h3 className="font-bold text-lg mb-2">Update Service</h3>
                         <form onSubmit={handleUpdateSubmit} className="space-y-3">
-                            {/* <input
-                                className="input input-bordered w-full"
-                                value={updatedData.title}
-                                onChange={(e) => setUpdatedData({ ...updatedData, title: e.target.value })}
-                            />
-                            <input
-                                className="input input-bordered w-full"
-                                value={updatedData.price}
-                                onChange={(e) => setUpdatedData({ ...updatedData, price: e.target.value })}
-                            />
-                            <input
-                                className="input input-bordered w-full"
-                                value={updatedData.category}
-                                onChange={(e) => setUpdatedData({ ...updatedData, category: e.target.value })}
-                            /> */}
-
                             <div>
                                 <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">Title</label>
                                 <input
