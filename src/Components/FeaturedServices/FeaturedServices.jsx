@@ -25,7 +25,7 @@ const FeaturedServices = () => {
     }
 
     return (
-        <div className="mb-10">
+        <div className="mb-10 px-4 sm:px-2 lg:px-8">
             <h1 className="text-3xl font-bold text-center mb-6">Featured Services</h1>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                 {services.map(service => (

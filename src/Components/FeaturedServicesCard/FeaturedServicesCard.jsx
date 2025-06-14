@@ -4,8 +4,8 @@ const FeaturedServicesCard = ({ service }) => {
     const { _id, image, title, description, price } = service;
 
     return (
-            <div>
-                <div className="card bg-base-100 w-96 shadow-sm">
+            <div className="flex justify-center">
+                <div className="card bg-base-100 w-full sm:w-80 md:w-96 shadow-sm">
                     <figure>
                         <img className="w-full h-48 object-cover rounded"
                             src={image}
@@ -23,7 +23,6 @@ const FeaturedServicesCard = ({ service }) => {
                     </div>
                 </div>
             </div>
-        
     );
 };
 
