@@ -60,7 +60,7 @@ const Login = () => {
             })
             .catch((err) => {
                 setError(err.message);
-                toast.error("Login failed!");
+                toast.error("Login failed! Check your username and password");
             });
 
     }
