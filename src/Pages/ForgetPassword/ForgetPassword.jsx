@@ -36,7 +36,7 @@ const ForgetPassword = () => {
     };
 
     return (
-        <div className='min-h-screen flex justify-center items-center bg-indigo-50'>
+        <div className='min-h-screen flex justify-center items-center mt-5 mb-5 bg-indigo-50'>
             <ToastContainer />
             <div className="card w-full max-w-lg p-10 shrink-0 shadow-2xl">
                 <h2 className='text-3xl font-bold text-center'>Reset Your Password</h2>
