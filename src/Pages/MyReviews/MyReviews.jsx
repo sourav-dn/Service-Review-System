@@ -10,24 +10,24 @@ const MyReviews = () => {
 
     const { user } = useContext(Authcontext);
     const [reviews, setReviews] = useState([]);
-    const [editing, setEditing] = useState(null); // review being edited
+    const [editing, setEditing] = useState(null);
     const [updatedText, setUpdatedText] = useState("");
     const [updatedRating, setUpdatedRating] = useState(0);
-    const [loading, setLoading] = useState(true); // ✅ Set loading to true initially
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user?.email) {
-            setLoading(true); // Set loading to true when starting fetch
+            setLoading(true);
             axios.get(`http://localhost:3000/my-reviews?email=${user.email}`, {
                 withCredentials: true,
             })
                 .then(res => {
                     setReviews(res.data);
-                    setLoading(false);  // Set loading to false once data is fetched
+                    setLoading(false); 
                 })
                 .catch(err => {
                     console.error(err);
-                    setLoading(false);  // In case of error, also set loading to false
+                    setLoading(false);
                 });
         }
     }, [user]);
@@ -53,8 +53,6 @@ const MyReviews = () => {
         setUpdatedText(review.text);
         setUpdatedRating(review.rating);
     };
-
-
 
 
     const handleUpdate = async (e) => {
@@ -87,10 +85,8 @@ const MyReviews = () => {
     };
 
 
-
-    // ✅ Show the loading page (spinner or loading screen) while data is being fetched
     if (loading) {
-        return <LoadingPage />;  // Show loading page or spinner
+        return <LoadingPage />; 
     }
 
     return (
