@@ -6,52 +6,35 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 const AllService = () => {
 
     const [services, setServices] = useState([]);
-
-
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('All');
-    const [loading, setLoading] = useState(true); // Set loading state to true initially
-
-
-
-
-
+    const [loading, setLoading] = useState(true); 
 
     const fetchServices = async () => {
-        setLoading(true); // Set loading to true when fetching starts
+        setLoading(true); 
         try {
             const res = await axios.get("http://localhost:3000/allService", {
                 params: {
-                    search: search.trim(),      // ✅ important to trim empty space
-                    filter: category === "All" ? "" : category,  // ✅ send blank if 'All'
+                    search: search.trim(),      
+                    filter: category === "All" ? "" : category,
                 },
             });
             setServices(res.data);
         } catch (err) {
             console.error("Failed to load services:", err);
         } finally {
-            setLoading(false); // Set loading to false when fetching ends
+            setLoading(false);
         }
     };
 
     useEffect(() => {
         const delay = setTimeout(() => {
             fetchServices();
-        }, 300); // debounce
+        }, 300);
 
         return () => clearTimeout(delay);
     }, [search, category]);
 
-
-
-
-
-
-    // useEffect(() => {
-    //     axios.get("http://localhost:3000/services")
-    //         .then(res => setServices(res.data))
-    //         .catch(err => console.error("Failed to load services:", err));
-    // }, []);
 
     return (
         <div className="py-16 px-6 md:px-16 lg:px-24">
@@ -84,12 +67,10 @@ const AllService = () => {
                 </select>
             </div>
 
-
-
             {/* Show loading spinner while fetching data */}
             {loading ? (
                 <div className="flex justify-center items-center min-h-screen">
-                    <LoadingPage/>  {/* Show the loading spinner */}
+                    <LoadingPage/>  
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
