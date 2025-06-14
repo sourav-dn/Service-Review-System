@@ -10,11 +10,11 @@ const MyServices = () => {
     const [services, setServices] = useState([]);
     const [editingService, setEditingService] = useState(null);
     const [updatedData, setUpdatedData] = useState({});
-    const [loading, setLoading] = useState(true); // ✅ Set loading state to true initially
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         if (user?.email) {
-            setLoading(true); // Set loading to true when the data starts fetching
+            setLoading(true);
             axios.get(`http://localhost:3000/my-services?email=${user.email}`, {
                 withCredentials: true,
             })
@@ -24,7 +24,7 @@ const MyServices = () => {
                 })
                 .catch(err => {
                     console.error(err);
-                    setLoading(false); // Set loading to false in case of error
+                    setLoading(false);
                 });
         }
     }, [user]);
