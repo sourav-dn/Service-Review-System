@@ -23,20 +23,6 @@ const Login = () => {
         const password = form.password.value;
 
 
-        // userLogin(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         setUser(user);
-        //         toast.success('Login Successful!');
-        //         setTimeout(() => {
-        //             navigate('/', { replace: true });
-        //         }, 1500);
-        //     })
-        //     .catch((err) => {
-        //         setError(err.message);
-        //         toast.error('Login failed! Please check your credentials.');
-        //     })
-
         userLogin(email, password)
             .then((result) => {
                 const user = result.user;
@@ -82,8 +68,6 @@ const Login = () => {
                 toast.error("Failed to sign in with google!")
             })
     }
-
-
 
     return (
         <div className='min-h-screen flex justify-center items-center px-4 flex-col lg:flex-row-reverse'>
