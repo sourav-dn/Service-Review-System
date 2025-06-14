@@ -2,12 +2,8 @@ import { useContext } from "react";
 import { Authcontext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-// import { useNavigate } from "react-router";
-
 
 const AddServices = () => {
-
-    // const navigate = useNavigate();
 
     const { user } = useContext(Authcontext);
 
@@ -32,7 +28,6 @@ const AddServices = () => {
             if (res.data.insertedId) {
                 toast.success("Service added successfully!");
                 form.reset();
-                // navigate("/services");
             }
         } catch (err) {
             console.error(err);
