@@ -13,19 +13,13 @@ const Motion = () => {
                                 src="https://i.ibb.co/NgBQnRqm/i11.png"
                                 animate={{ y: [40, 80, 40] }}
                                 transition={{ duration: 10, repeat: Infinity }}
-                                className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4
-               border-yellow-500 lg:w-64 md:w-64 w-44 shadow-2xl"
+                                className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-yellow-500 lg:w-64 md:w-64 w-44 shadow-2xl"
                             />
-
-
-
-
                             <motion.img
                                 src="https://i.ibb.co/4nC9pcQz/i12.jpg"
                                 animate={{ x: [50, 100, 50] }}
                                 transition={{ duration: 10, delay: 5, repeat: Infinity }}
-                                className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4
-               border-yellow-500 lg:w-64 md:w-64 w-40 shadow-2xl"
+                                className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-yellow-500 lg:w-64 md:w-64 w-40 shadow-2xl"
                             />
                         </div>
                         <div className="flex-1">
@@ -52,7 +46,7 @@ const Motion = () => {
                                 Service Scope is a full-stack platform where users can add, review, and manage services.
                             </p>
                             <Link to="/">
-                                <button className="btn bg-[#031e40] text-white">
+                                <button className="btn bg-blue-700 text-white">
                                     Get Started
                                 </button>
                             </Link>
