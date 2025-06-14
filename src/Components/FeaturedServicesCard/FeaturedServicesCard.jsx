@@ -1,9 +1,6 @@
 import { Link } from "react-router";
 
-
-
 const FeaturedServicesCard = ({ service }) => {
-
     const { _id, image, title, description, price } = service;
 
     return (
