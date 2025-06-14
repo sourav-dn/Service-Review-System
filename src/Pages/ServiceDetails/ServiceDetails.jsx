@@ -20,11 +20,11 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/serviceDetails/${id}`)
+        axios.get(`https://service-scope-server-sigma.vercel.app/serviceDetails/${id}`)
             .then((res) => setService(res.data))
             .catch(err => console.error("Error:", err));
 
-        axios.get(`http://localhost:3000/reviews/${id}`)
+        axios.get(`https://service-scope-server-sigma.vercel.app/reviews/${id}`)
             .then(res => setReviews(res.data))
             .catch(err => console.error("Review Fetch Error:", err));
     }, [id]);
@@ -49,7 +49,7 @@ const ServiceDetails = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/reviews", review, {
+            const res = await axios.post("https://service-scope-server-sigma.vercel.app/reviews", review, {
                 withCredentials: true
             });
             if (res.data.insertedId) {

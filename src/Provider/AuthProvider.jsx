@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
   const logOut = async () => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:3000/logout", {}, { withCredentials: true });
+      await axios.post("https://service-scope-server-sigma.vercel.app/logout", {}, { withCredentials: true });
       await signOut(auth);
       setUser(null);
     } catch (err) {
@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
         // Optionally: You can fetch JWT here instead of Login page
         try {
           await axios.post(
-            "http://localhost:3000/jwt",
+            "https://service-scope-server-sigma.vercel.app/jwt",
             { email: loggedUser.email },
             { withCredentials: true }
           );

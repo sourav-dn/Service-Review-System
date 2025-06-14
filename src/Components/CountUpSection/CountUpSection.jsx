@@ -12,7 +12,7 @@ const CountUpSection = () => {
     const reviewCount = 4526;
 
     useEffect(() => {
-        axios.get("http://localhost:3000/service-count")
+        axios.get("https://service-scope-server-sigma.vercel.app/service-count")
             .then(res => setServiceCount(res.data.services || 0))
             .catch(err => console.error("Failed to fetch services count:", err));
     }, []);

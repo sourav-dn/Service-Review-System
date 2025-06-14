@@ -13,7 +13,7 @@ const AllService = () => {
     const fetchServices = async () => {
         setLoading(true); 
         try {
-            const res = await axios.get("http://localhost:3000/allService", {
+            const res = await axios.get("https://service-scope-server-sigma.vercel.app/allService", {
                 params: {
                     search: search.trim(),      
                     filter: category === "All" ? "" : category,

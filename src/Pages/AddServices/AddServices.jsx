@@ -24,7 +24,7 @@ const AddServices = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/services", newService);
+            const res = await axios.post("https://service-scope-server-sigma.vercel.app/services", newService);
             if (res.data.insertedId) {
                 toast.success("Service added successfully!");
                 form.reset();

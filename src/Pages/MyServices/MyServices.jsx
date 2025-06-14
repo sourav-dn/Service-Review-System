@@ -15,7 +15,7 @@ const MyServices = () => {
     useEffect(() => {
         if (user?.email) {
             setLoading(true);
-            axios.get(`http://localhost:3000/my-services?email=${user.email}`, {
+            axios.get(`https://service-scope-server-sigma.vercel.app/my-services?email=${user.email}`, {
                 withCredentials: true,
             })
                 .then(res => {
@@ -32,7 +32,7 @@ const MyServices = () => {
     const handleDelete = async (id) => {
         const confirm = window.confirm("Are you sure?");
         if (!confirm) return;
-        await axios.delete(`http://localhost:3000/services/${id}`);
+        await axios.delete(`https://service-scope-server-sigma.vercel.app/services/${id}`);
         setServices(prev => prev.filter(s => s._id !== id));
         toast.success("Deleted!");
     };
@@ -43,7 +43,7 @@ const MyServices = () => {
         try {
             const { _id, ...dataToSend } = updatedData;
 
-            const response = await axios.put(`http://localhost:3000/services/${editingService._id}`, dataToSend, {
+            const response = await axios.put(`https://service-scope-server-sigma.vercel.app/services/${editingService._id}`, dataToSend, {
                 withCredentials: true
             });
             if (response.status === 200) {

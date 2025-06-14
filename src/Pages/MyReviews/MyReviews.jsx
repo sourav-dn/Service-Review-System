@@ -18,7 +18,7 @@ const MyReviews = () => {
     useEffect(() => {
         if (user?.email) {
             setLoading(true);
-            axios.get(`http://localhost:3000/my-reviews?email=${user.email}`, {
+            axios.get(`https://service-scope-server-sigma.vercel.app/my-reviews?email=${user.email}`, {
                 withCredentials: true,
             })
                 .then(res => {
@@ -37,7 +37,7 @@ const MyReviews = () => {
         if (!confirm) return;
 
         try {
-            await axios.delete(`http://localhost:3000/reviews/${id}`, {
+            await axios.delete(`https://service-scope-server-sigma.vercel.app/reviews/${id}`, {
                 withCredentials: true
             });
             setReviews(reviews.filter(r => r._id !== id));
@@ -58,7 +58,7 @@ const MyReviews = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:3000/reviews/${editing}`, {
+            const response = await axios.put(`https://service-scope-server-sigma.vercel.app/reviews/${editing}`, {
                 text: updatedText,
                 rating: updatedRating
             }, { withCredentials: true });
