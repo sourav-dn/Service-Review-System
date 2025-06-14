@@ -26,10 +26,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  // const logOut = () => {
-  //   setLoading(true);
-  //   return signOut(auth);
-  // };
 
   // Logout
   const logOut = async () => {
@@ -44,14 +40,6 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     setLoading(false);
-  //   });
-  //   return () => unsubscribe();
-  // }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (loggedUser) => {

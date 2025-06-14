@@ -77,7 +77,7 @@ const MyServices = () => {
     }
 
     return (
-        <div className="p-8 min-h-screen mt-5 mb-5">
+        <div className="p-4 sm:p-6 lg:p-8 min-h-screen mt-5 mb-5">
             <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">My Services</h2>
             <div className="overflow-x-auto border-2 rounded-4xl">
                 <table className="table table-zebra w-full">
@@ -119,7 +119,7 @@ const MyServices = () => {
             </div>
             {editingService && (
                 <div className="modal modal-open">
-                    <div className="modal-box">
+                    <div className="modal-box max-w-4xl w-full p-6">
                         <h3 className="font-bold text-lg mb-2">Update Service</h3>
                         <form onSubmit={handleUpdateSubmit} className="space-y-3">
                             <div>
