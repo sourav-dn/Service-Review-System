@@ -1,0 +1,114 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
+import LoadingPage from '../LoadingPage/LoadingPage';
+
+const AllService = () => {
+
+    const [services, setServices] = useState([]);
+
+
+    const [search, setSearch] = useState('');
+    const [category, setCategory] = useState('All');
+    const [loading, setLoading] = useState(true); // Set loading state to true initially
+
+
+
+
+
+
+    const fetchServices = async () => {
+        setLoading(true); // Set loading to true when fetching starts
+        try {
+            const res = await axios.get("http://localhost:3000/allService", {
+                params: {
+                    search: search.trim(),      // ✅ important to trim empty space
+                    filter: category === "All" ? "" : category,  // ✅ send blank if 'All'
+                },
+            });
+            setServices(res.data);
+        } catch (err) {
+            console.error("Failed to load services:", err);
+        } finally {
+            setLoading(false); // Set loading to false when fetching ends
+        }
+    };
+
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            fetchServices();
+        }, 300); // debounce
+
+        return () => clearTimeout(delay);
+    }, [search, category]);
+
+
+
+
+
+
+    // useEffect(() => {
+    //     axios.get("http://localhost:3000/services")
+    //         .then(res => setServices(res.data))
+    //         .catch(err => console.error("Failed to load services:", err));
+    // }, []);
+
+    return (
+        <div className="py-16 px-6 md:px-16 lg:px-24">
+            <h2 className="text-4xl font-bold text-center mb-12 text-blue-700"> All Services</h2>
+
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-10">
+                <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search by title, category or company..."
+                    className="input input-bordered w-full md:w-1/2"
+                />
+
+                <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="select select-bordered"
+                >
+                    <option value="All">All Categories</option>
+                    <option value="Restaurants & Bars">Restaurants & Bars</option>
+                    <option value="Home Services">Home Services</option>
+                    <option value="Shopping & Fashion">Shopping & Fashion</option>
+                    <option value="Health & Medical">Health & Medical</option>
+                    <option value="Travel and Vacation">Travel and Vacation</option>
+                    <option value="Money & Insurance">Money & Insurance</option>
+                    <option value="Business Services">Business Services</option>
+                    <option value="Electronics & Technology">Electronics & Technology</option>
+                    <option value="Hobbies & Craft">Hobbies & Craft</option>
+                </select>
+            </div>
+
+
+
+            {/* Show loading spinner while fetching data */}
+            {loading ? (
+                <div className="flex justify-center items-center min-h-screen">
+                    <LoadingPage/>  {/* Show the loading spinner */}
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {services.map(service => (
+                        <div key={service._id} className="border rounded-lg p-4 shadow bg-white hover:shadow-md transition">
+                            <img src={service.image} alt={service.title} className="w-full h-48 object-cover rounded mb-4" />
+                            <h3 className="text-xl font-semibold mb-1">{service.title}</h3>
+                            <p className="text-gray-600 text-sm mb-2">{service.description.slice(0, 100)}...</p>
+                            <p className="text-sm text-gray-500"><strong>Category:</strong> {service.category}</p>
+                            <p className="text-sm text-gray-700 mb-3"><strong>Price:</strong> ${service.price}</p>
+                            <Link to={`/serviceDetails/${service._id}`}>
+                                <button className="btn btn-sm bg-blue-600 text-white w-full">See Details</button>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default AllService;
