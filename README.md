@@ -3,7 +3,7 @@
 A full-stack web application that allows users to review and interact with services. 
 Users can register/login, add services, post reviews, update/delete their submissions, and browse all existing services and reviews.
 
-**Live Site:** [https://eloquent-rolypoly-e926ad.netlify.app/]
+**Live Site:** [https://b11a11-service-client-side-sourav.netlify.app/]
 
 ## Features
 
@@ -140,9 +140,9 @@ All API routes are protected using JWT authentication, ensuring only authorized 
 ## Installation
 1. Clone the repository: 
 
-   git clone in client side - 
+   git clone in client side - https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-sourav-dn
    
-   git clone in server side - 
+   git clone in server side - https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-sourav-dn
 
 
 
