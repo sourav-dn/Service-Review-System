@@ -68,6 +68,7 @@ Users can register/login, add services, post reviews, update/delete their submis
 * Framer Motion
 * React CountUp
 * SweetAlert / React Toastify
+* React Icons
 
 ### Backend:
 
