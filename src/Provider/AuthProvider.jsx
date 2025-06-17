@@ -45,7 +45,6 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (loggedUser) => {
       if (loggedUser) {
         setUser(loggedUser);
-        // Optionally: You can fetch JWT here instead of Login page
         try {
           await axios.post(
             "https://service-scope-server-sigma.vercel.app/jwt",
