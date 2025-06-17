@@ -79,10 +79,11 @@ Users can register/login, add services, post reviews, update/delete their submis
 
 ## NPM Packages Used
 - `react`
-- `react-router-dom`
+- `react-router`
 - `firebase`
 - `axios`
 - `react-toastify`
+- `react-icons`
 - `framer-motion`
 - `dotenv`
 - `mongodb`
