@@ -14,7 +14,6 @@ import MyServices from "../Pages/MyServices/MyServices";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CountUpSection from "../Components/CountUpSection/CountUpSection";
-import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
 
 
 
@@ -59,11 +58,8 @@ export const router = createBrowserRouter([
         {
           path: "/my-reviews",
           element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
-        },
-        {
-          path: "/forgetpassword",
-          Component: ForgetPassword
         }
+        
     ]
   },
 ]);
