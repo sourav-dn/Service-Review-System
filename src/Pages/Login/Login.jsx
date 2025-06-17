@@ -51,10 +51,7 @@ const Login = () => {
 
     }
 
-    const handleForgetPassword = () => {
-        navigate('/forgetpassword')
 
-    }
     const googleProvider = new GoogleAuthProvider();
 
     const handleGoogleSignIn = () => {
@@ -100,10 +97,6 @@ const Login = () => {
                                 {error}
                             </label>
                         )}
-                        <Link onClick={handleForgetPassword}
-                            className="label mt-2 font-bold text-blue-600">
-                            Forget Password?
-                        </Link>
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn bg-blue-600 text-white w-full">Login</button>
