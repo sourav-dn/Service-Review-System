@@ -3,7 +3,7 @@
 A full-stack web application that allows users to review and interact with services. 
 Users can register/login, add services, post reviews, update/delete their submissions, and browse all existing services and reviews.
 
-**Live Site:** [https://service-scope.netlify.app/]
+**Live Site:** [https://b11a11-service-client-side-sourav-dn.netlify.app]
 
 ## Features
 
