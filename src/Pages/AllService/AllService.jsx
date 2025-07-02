@@ -73,19 +73,39 @@ const AllService = () => {
                     <LoadingPage/>  
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map(service => (
-                        <div key={service._id} className="border rounded-lg p-4 shadow bg-white hover:shadow-md transition">
-                            <img src={service.image} alt={service.title} className="w-full h-48 object-cover rounded mb-4" />
-                            <h3 className="text-xl font-semibold mb-1">{service.title}</h3>
-                            <p className="text-gray-600 text-sm mb-2">{service.description.slice(0, 100)}...</p>
-                            <p className="text-sm text-gray-500"><strong>Category:</strong> {service.category}</p>
-                            <p className="text-sm text-gray-700 mb-3"><strong>Price:</strong> ${service.price}</p>
-                            <Link to={`/serviceDetails/${service._id}`}>
-                                <button className="btn btn-sm bg-blue-600 text-white w-full">See Details</button>
-                            </Link>
-                        </div>
-                    ))}
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {services.map(service => (
+                                <tr key={service._id}>
+                                    <td>
+                                        <img 
+                                            src={service.image} 
+                                            alt={service.title} 
+                                            className="w-16 h-16 object-cover rounded"
+                                        />
+                                    </td>
+                                    <td className="font-semibold">{service.title}</td>
+                                    <td>{service.category}</td>
+                                    <td>${service.price}</td>
+                                    <td>
+                                        <Link to={`/serviceDetails/${service._id}`}>
+                                            <button className="btn btn-sm bg-blue-600 text-white hover:bg-blue-700">See Details</button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             )}
         </div>

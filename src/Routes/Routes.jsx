@@ -14,6 +14,10 @@ import MyServices from "../Pages/MyServices/MyServices";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CountUpSection from "../Components/CountUpSection/CountUpSection";
+import About from "../Pages/About/About";
+import Contact from "../Pages/Contact/Contact";
+import Faq from "../Pages/Faq/Faq";
+import Blog from "../Pages/Blog/Blog";
 
 
 
@@ -26,6 +30,22 @@ export const router = createBrowserRouter([
         {
             index: true,
             Component: Home
+        },
+        {
+          path:"/about",
+          Component: About
+        },
+        {
+          path: "/contact",
+          Component: Contact
+        },
+        {
+          path: "/faq",
+          Component: Faq
+        },
+        {
+          path: "/blog",
+          Component: Blog
         },
         {
           path: "/allService",

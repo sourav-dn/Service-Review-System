@@ -23,7 +23,7 @@ const MyReviews = () => {
             })
                 .then(res => {
                     setReviews(res.data);
-                    setLoading(false); 
+                    setLoading(false);
                 })
                 .catch(err => {
                     console.error(err);
@@ -86,61 +86,75 @@ const MyReviews = () => {
 
 
     if (loading) {
-        return <LoadingPage />; 
+        return <LoadingPage />;
     }
 
     return (
         <div className="p-6 md:p-12 min-h-screen">
-            <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">My Reviews</h2>
+            <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">My Reviews</h2>
 
-            {reviews.length === 0 ? (
+            {loading ? (
+                <LoadingPage />
+            ) : reviews.length === 0 ? (
                 <p className="text-center">You have not submitted any reviews.</p>
             ) : (
-                <div className="space-y-6 max-w-2xl mx-auto">
-                    {reviews.map(review => (
-                        <div key={review._id} className="p-4 border shadow rounded bg-white">
-                            {editing === review._id ? (
-                                <form onSubmit={handleUpdate} className="space-y-3">
-                                    <input
-                                        value={review.serviceTitle || "Service Title"}
-                                        readOnly
-                                        className="input input-bordered w-full bg-gray-100"
-                                    />
-                                    <textarea
-                                        value={updatedText}
-                                        onChange={(e) => setUpdatedText(e.target.value)}
-                                        className="textarea textarea-bordered w-full"
-                                    ></textarea>
-                                    <div className="flex items-center gap-3">
-                                        <span>Rating:</span>
-                                        <Rating
-                                            style={{ maxWidth: 180 }}
-                                            value={updatedRating}
-                                            onChange={setUpdatedRating}
-                                        />
-                                    </div>
-                                    <div className="flex gap-4 mt-2">
-                                        <button type="submit" className="btn btn-success btn-sm">Save</button>
-                                        <button type="button" onClick={() => setEditing(null)} className="btn btn-ghost btn-sm">Cancel</button>
-                                    </div>
-                                </form>
-                            ) : (
-                                <>
-                                    <h3 className="text-lg font-bold">{review.serviceTitle || "Service Title"}</h3>
-                                    <p className="text-gray-700">{review.text}</p>
-                                    <Rating
-                                        style={{ maxWidth: 120 }}
-                                        value={review.rating}
-                                        readOnly
-                                    />
-                                    <div className="mt-3 flex gap-3">
-                                        <button onClick={() => openEdit(review)} className="btn btn-warning btn-sm">Update</button>
-                                        <button onClick={() => handleDelete(review._id)} className="btn btn-error btn-sm">Delete</button>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    ))}
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Review</th>
+                                <th>Rating</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {reviews.map(review => (
+                                <tr key={review._id}>
+                                    <td className="font-semibold">{review.serviceTitle || "Service Title"}</td>
+                                    <td>
+                                        {editing === review._id ? (
+                                            <textarea
+                                                value={updatedText}
+                                                onChange={(e) => setUpdatedText(e.target.value)}
+                                                className="textarea textarea-bordered w-full"
+                                            ></textarea>
+                                        ) : (
+                                            <span>{review.text}</span>
+                                        )}
+                                    </td>
+                                    <td>
+                                        {editing === review._id ? (
+                                            <Rating
+                                                style={{ maxWidth: 140 }}
+                                                value={updatedRating}
+                                                onChange={setUpdatedRating}
+                                            />
+                                        ) : (
+                                            <Rating
+                                                style={{ maxWidth: 120 }}
+                                                value={review.rating}
+                                                readOnly
+                                            />
+                                        )}
+                                    </td>
+                                    <td className="space-x-2">
+                                        {editing === review._id ? (
+                                            <>
+                                                <button onClick={handleUpdate} className="btn btn-success btn-sm">Save</button>
+                                                <button onClick={() => setEditing(null)} className="btn btn-ghost btn-sm">Cancel</button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <button onClick={() => openEdit(review)} className="btn btn-warning btn-sm">Update</button>
+                                                <button onClick={() => handleDelete(review._id)} className="btn btn-error btn-sm">Delete</button>
+                                            </>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             )}
         </div>

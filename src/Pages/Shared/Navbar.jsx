@@ -21,13 +21,41 @@ const Navbar = () => {
 
     const navLinks = (
         <>
-            <li><NavLink to="/" className={({ isActive }) => isActive ? "text-blue-600 font-bold" : ""}>Home</NavLink></li>
-            <li><NavLink to="/allService" className={({ isActive }) => isActive ? "text-blue-600 font-bold" : ""}>All Service</NavLink></li>
+            <li><NavLink to="/">Home</NavLink></li>
+            {/* <li><NavLink to="/allService">All Service</NavLink></li> */}
+            <li>
+                <NavLink
+                    to="/about">
+                    About
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/contact">
+                    Contact
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/faq"
+                    
+                >
+                    FAQ
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/blog"
+                    
+                >
+                    Blog
+                </NavLink>
+            </li>
             {user && (
                 <>
-                    <li><NavLink to="/add-services" className={({ isActive }) => isActive ? "text-blue-600 font-bold" : ""}>Add Services</NavLink></li>
-                    <li><NavLink to="/my-services" className={({ isActive }) => isActive ? "text-blue-600 font-bold" : ""}>My Services</NavLink></li>
-                    <li><NavLink to="/my-reviews" className={({ isActive }) => isActive ? "text-blue-600 font-bold" : ""}>My Reviews</NavLink></li>
+                    <li><NavLink to="/allService">All Service</NavLink></li>
+                    <li><NavLink to="/add-services">Add Services</NavLink></li>
+                    <li><NavLink to="/my-services">My Services</NavLink></li>
+                    <li><NavLink to="/my-reviews">My Reviews</NavLink></li>
                 </>
             )}
         </>
@@ -36,8 +64,8 @@ const Navbar = () => {
 
 
     return (
-        <div>
-            <div className="navbar bg-base-100">
+        <div className="sticky top-0 z-50 shadow-lg">
+            <div className="navbar bg-blue-400">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

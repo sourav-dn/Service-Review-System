@@ -18,7 +18,7 @@ const FeaturedServicesCard = ({ service }) => {
                         </h2>
                         <p>{description}</p>
                         <Link to={`/serviceDetails/${service._id}`}>
-                            <button className="btn btn-sm bg-blue-600 text-white mt-4">See Details</button>
+                            <button className="btn btn-sm bg-blue-600 text-white mt-4">See More</button>
                         </Link>
                     </div>
                 </div>
